@@ -1,0 +1,25 @@
+[DEFAULT]
+MTSName:      node-
+endNodeName:  endnode-
+remoteCodeDirectory:  /users/abc1234
+
+[GENI Credentials]
+username:             abc1234
+password:             secret5678
+
+[Local Utilities]
+RSPEC:                  /home/abc1234/Desktop/RSTP_abc1234/RSTP_Automation/RSTP_RSPEC.xml
+privateKey:             /home/abc1234/.ssh/id_geni_ssh_rsa
+localWorkingDirectory:  /home/abc1234/Desktop/RSTP_abc1234/RSTP_Automation
+
+[MTP Utilities]
+localCodeDirectory:     /home/abc1234/Desktop/MTP_abc1234/MTP
+rootRedundancy:         false
+includeVLANs:           false
+rootNode:               node-0
+
+[RSTP Utilities]
+endNodesInTopology:     true
+endNodeTrafficSource:   endnode-0
+trafficToSend:          ARP
+rootNode:               node-0
