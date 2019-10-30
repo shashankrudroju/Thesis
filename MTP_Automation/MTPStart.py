@@ -81,7 +81,7 @@ def runMTPImplementation(GENIDict, workingDirectory, timing):
     enterDirectory = "cd {0};".format(workingDirectory)
 
     # Meshed Tree Switch startup commands
-    stopMTP = "{0} sudo rm mtpd.log && sudo rm -r *_files*".format(enterDirectory)
+    stopMTP = "{0} sudo rm *.log && sudo rm -r *_files*".format(enterDirectory)
     removingOldLogs = "{0} sudo rm *.txt; sudo rm screenlog.0".format(enterDirectory)
     compileMTP = "{0} sudo sh install".format(enterDirectory)
     startMTP = "{0} screen -dmS {1} -L{2}bash -c 'sudo bash MTP_nano_sleep {3} {4}; exec bash'"
@@ -104,11 +104,11 @@ def runMTPImplementation(GENIDict, workingDirectory, timing):
 
             if(currentRemoteNode == primaryRootSwitch):
                 print("MTS Status: Primary root node")
-                rootStartMTP = startMTP.format(enterDirectory, primaryRootSwitchScreenName, screenCompatability, "y", primaryRootStartTime)
+                rootStartMTP = startMTP.format(enterDirectory, primaryRootSwitchScreenName, screenCompatability, "one", primaryRootStartTime)
                 cmdList.append(rootStartMTP)
 	    if(currentRemoteNode == secondaryRootSwitch):
                 print("MTS Status: Secondary Root node")
-                rootStartMTP1 = startMTP.format(enterDirectory, secondaryRootSwitchScreenName, screenCompatability, "y", secondaryRootStartTime)
+                rootStartMTP1 = startMTP.format(enterDirectory, secondaryRootSwitchScreenName, screenCompatability, "two", secondaryRootStartTime)
                 cmdList.append(rootStartMTP1)
             if(currentRemoteNode != secondaryRootSwitch and currentRemoteNode != primaryRootSwitch):
                 print("MTS Status: nonroot node")

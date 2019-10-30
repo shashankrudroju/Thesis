@@ -8,15 +8,15 @@ password:             shashank
 remoteCodeDirectory:  /users/sr1632
 OSVersion:            18.04
 
-[Local Utilities]
-RSPEC:                    /mnt/c/Users/shashankru/Desktop/Thesis/MTP_Automation/MTP_RSPEC.xml
-privateKey:               /mnt/c/Users/shashankru/.ssh/id_geni_ssh_rsa
-localWorkingDirectory:    /mnt/c/Users/shashankru/Desktop/Thesis/MTP_Automation
-trafficGeneratorLocation: /mnt/c/Users/shashankru/Desktop/Thesis/MTP_Automation/TrafficGenerator.py
-endnodeInfoLocation:      /mnt/c/Users/shashankru/Desktop/Thesis/MTP_Automation/addrInfo.cnf
+[Local Utilities]             
+RSPEC:                    C:\Users\shashankru\Desktop\Thesis\MTP_Automation\MTP_RSPEC.xml
+privateKey:               C:\Users\shashankru\.ssh\id_geni_ssh_rsa
+localWorkingDirectory:    C:\Users\shashankru\Desktop\Thesis\MTP_Automation\
+trafficGeneratorLocation: C:\Users\shashankru\Desktop\Thesis\MTP_Automation\TrafficGenerator.py
+endnodeInfoLocation:      C:\Users\shashankru\Desktop\Thesis\MTP_Automation\addrInfo.cnf
 
 [MTP Utilities]
-localCodeDirectory:     /mnt/c/Users/shashankru/CLionProjects/MTP-Root-Redundancy
+localCodeDirectory:     C:\Users\shashankru\CLionProjects\MTP-Root-Redundancy
 rootRedundancy:         true
 includeVLANs:           false
 endNodesInTopology:     true

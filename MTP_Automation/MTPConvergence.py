@@ -30,16 +30,16 @@ def collectData():
     remoteWorkingDirectory = os.path.join(codeDestination, os.path.basename(codeDirectory)).replace("\\", "/")
 
     # Create a new directory in which the test results will be stored (MTP_Test is added at the end of the directory name for consistency)
-    newDir = "./MTP_Test_{}".format(testName)
+    newDir = "./{}".format(testName)
     os.makedirs(newDir)
 
     # Support commands for other commands
     enterDirectory = "cd {0} &&".format(remoteWorkingDirectory)
 
     # Commands to run for a Meshed Tree Switch
-    copyLogFile = "{0} cp mtpd.log {1}"
+    copyLogFile = "{0} cp mtpd_1.log {1} && cp mtpd_2.log {2}"
     createDir =  "{0} mkdir {1}_files"
-    moveLogFile = "{0} mv {1} {2}_files/"
+    moveLogFile = "{0} mv *.log {1}_files/"
     zipFiles =  "{0} zip -r {1}_files.zip {1}_files/"
 
     # Commands to run for a client node
@@ -52,12 +52,14 @@ def collectData():
 
         if(endNodeNamingSyntax not in currentRemoteNode):
             logFileName = "{0}.log".format(currentRemoteNode)
-            updated_copyLogFile = copyLogFile.format(enterDirectory, logFileName)
+            removeMtpdFiles = "{0} sudo rm mtpd*.log".format(enterDirectory)
+            logFileName_tree2 = "{0}_tree2.log".format(currentRemoteNode)
+            updated_copyLogFile = copyLogFile.format(enterDirectory, logFileName, logFileName_tree2)
             updated_createDir = createDir.format(enterDirectory, currentRemoteNode)
-            updated_moveLogFile = moveLogFile.format(enterDirectory, logFileName, currentRemoteNode)
+            updated_moveLogFile = moveLogFile.format(enterDirectory, currentRemoteNode)
             updated_zipFiles = zipFiles.format(enterDirectory, currentRemoteNode)
 
-            cmdList.extend([updated_copyLogFile, updated_createDir, updated_moveLogFile, updated_zipFiles])
+            cmdList.extend([updated_copyLogFile, removeMtpdFiles, updated_createDir, updated_moveLogFile, updated_zipFiles])
             trafficFileLocation = str(os.path.join(remoteWorkingDirectory, currentRemoteNode + "_files.zip").replace("\\", "/"))
             needToCollectData = True
 
